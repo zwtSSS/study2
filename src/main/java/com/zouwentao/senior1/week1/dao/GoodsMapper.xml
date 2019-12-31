@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zouwentao.senior1.week1.dao.GoodsMapper">
+	
+	<select id="list" resultType="goods">
+		select g.*,b.`name` bname,k.name tname from tb_goods g left join tb_brand b on g.bid=b.id LEFT JOIN tb_goodskind k on g.tid=k.id 
+		<if test="name!=null and name!=''">
+			where g.name like '%${name}%'
+		</if>
+	</select>
+	
+	
+</mapper>
